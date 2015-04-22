@@ -15,20 +15,21 @@ provisioner:
   client_rb:
     diff_disabled: true
 
+transport:
+  ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
+
 platforms:
   - name: ubuntu-12.04
     driver_plugin: ec2
     driver_config:
       region: "us-west-2"
       availability_zone: "us-west-2a"
-      ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
       security_group_ids: ["travis-ci"]
   - name: centos-6.4
     driver_plugin: ec2
     driver_config:
       region: "us-west-2"
       availability_zone: "us-west-2a"
-      ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
       security_group_ids: ["travis-ci"]
 
 suites:
