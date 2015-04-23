@@ -1,9 +1,14 @@
 ---
-driver_config:
+driver:
+  name: ec2
   aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   aws_ssh_key_id: <%= ENV['AWS_KEYPAIR_NAME'] %>
   iam_profile_name: <%= ENV['IAM_PROFILE_NAME'] %>
+  region: "us-west-2"
+  availability_zone: "us-west-2a"
+  security_group_ids: ["travis-ci"]
+
 
 provisioner:
   name: chef_zero
@@ -20,17 +25,13 @@ transport:
 
 platforms:
   - name: ubuntu-12.04
-    driver_plugin: ec2
-    driver_config:
-      region: "us-west-2"
-      availability_zone: "us-west-2a"
-      security_group_ids: ["travis-ci"]
+    driver:
+      # http://cloud-images.ubuntu.com/locator/ec2/
+      image_id: ami-e1557fd1
   - name: centos-6.4
-    driver_plugin: ec2
-    driver_config:
-      region: "us-west-2"
-      availability_zone: "us-west-2a"
-      security_group_ids: ["travis-ci"]
+    driver:
+      # https://aws.amazon.com/marketplace/seller-profile/ref=srh_res_product_vendor?id=16cb8b03-256e-4dde-8f34-1b0f377efe89
+      image_id: ami-bd58c98d
 
 suites:
   - name: webapp
