@@ -44,6 +44,7 @@ matrix:
     - cd kitchen-tests
     script:
 # FIXME: we should fix centos-6 against AWS and then enable it here
+    - echo "$IAM_PROFILE_NAME"
     - if [ "$TRAVIS_SECURE_ENV_VARS" = "true" ]; then bundle exec kitchen test ubuntu; fi
     after_script:
     - if [ "$TRAVIS_SECURE_ENV_VARS" = "true" ]; then bundle exec kitchen destroy ubuntu; fi
