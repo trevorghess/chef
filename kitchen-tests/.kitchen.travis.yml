@@ -31,7 +31,7 @@ platforms:
   - name: centos-6.4
     driver:
       # https://aws.amazon.com/marketplace/seller-profile/ref=srh_res_product_vendor?id=16cb8b03-256e-4dde-8f34-1b0f377efe89
-      image_id: ami-bd58c98d
+      image_id: ami-b3bf2f83
 
 suites:
   - name: webapp
